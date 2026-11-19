@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Incident Response & Ransomware Simulation</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 24px; }
+    .box { max-width: 900px; margin: auto; background: #1e293b; padding: 24px; border-radius: 10px; border: 1px solid #334155; }
+    h1 { margin-top: 0; color: #38bdf8; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+    .card { background: #0f172a; padding: 14px; border-radius: 8px; border: 1px solid #334155; }
+    .num { font-size: 24px; font-weight: bold; color: #4ade80; margin-top: 6px; }
+    button { background: #0284c7; color: #fff; border: none; padding: 10px 14px; border-radius: 6px; cursor: pointer; margin-right: 8px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    th, td { border-bottom: 1px solid #334155; padding: 10px; text-align: left; font-size: 14px; }
+    th { color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Incident Response Plan & Ransomware Simulation</h1>
+    <p>Internee.pk Cybersecurity Internship Lab by Ali Zain Hamed</p>
 
+    <div class="grid">
+      <div class="card"><div>IR Phases</div><div class="num">6</div></div>
+      <div class="card"><div>Recovery Rate</div><div class="num">100%</div></div>
+      <div class="card"><div>MITRE Techniques</div><div class="num">T1059 / T1490 / T1486</div></div>
+      <div class="card"><div>Staff Playbook</div><div class="num">READY</div></div>
+    </div>
+
+    <button onclick="addRow('STAFF_TRAINING', 'Emergency drill completed', 'TRAINED')">Run Staff Drill</button>
+    <button onclick="addRow('RECOVERY', 'SHA-256 restore check passed', 'VERIFIED')">Verify Recovery</button>
+
+    <table>
+      <thead>
+        <tr><th>Phase</th><th>Action</th><th>Status</th></tr>
+      </thead>
+      <tbody id="tbody">
+        <tr><td>PREPARATION</td><td>Clean baseline backup in vault</td><td>COMPLETED</td></tr>
+        <tr><td>DETECTION</td><td>Mass file lock & recovery tamper alert</td><td>ALERT_HIGH</td></tr>
+        <tr><td>CONTAINMENT</td><td>Isolate host & revoke sessions</td><td>MITIGATED</td></tr>
+        <tr><td>RECOVERY</td><td>Restore from vault & verify hashes</td><td>VERIFIED</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function addRow(phase, action, status) {
+      var tb = document.getElementById("tbody");
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + phase + "</td><td>" + action + "</td><td>" + status + "</td>";
+      tb.insertBefore(tr, tb.firstChild);
+    }
+  </script>
+</body>
+</html>
