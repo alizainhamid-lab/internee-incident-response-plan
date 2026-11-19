@@ -1,0 +1,4 @@
+Internee.pk Incident Response Task - Summary
+Total IR & Drill Log Entries: 6
+Phases Logged: {'PREPARATION': 1, 'DETECTION': 2, 'CONTAINMENT_MITIGATION': 1, 'RECOVERY': 1, 'STAFF_TRAINING': 1}
+Controls Configured: Pre-Incident Backup Snapshot, MITRE ATT&CK Ransomware Simulation, Containment/Mitigation, SHA-256 Recovery Verification, Staff Emergency Playbook.

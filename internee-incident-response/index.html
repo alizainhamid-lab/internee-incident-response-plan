@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internee.pk Incident Response & Ransomware Playbook Console</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; background: #0b1120; color: #e2e8f0; margin: 0; padding: 24px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    h1 { color: #38bdf8; margin-bottom: 4px; }
+    .sub { color: #94a3b8; margin-bottom: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 16px; }
+    .card h3 { margin: 0 0 8px; font-size: 13px; color: #94a3b8; text-transform: uppercase; }
+    .card .val { font-size: 28px; font-weight: bold; }
+    .ok { color: #4ade80; } .info { color: #38bdf8; } .warn { color: #f87171; }
+    .controls { margin-bottom: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
+    button { background: #0284c7; color: white; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    button:hover { background: #0369a1; }
+    button.sec { background: #334155; }
+    table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 10px; overflow: hidden; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #334155; font-size: 14px; }
+    th { background: #0f172a; color: #94a3b8; }
+    .badge { padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; background: #14532d; color: #bbf7d0; }
+    .b-ALERT { background: #7f1d1d; color: #fecaca; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚨 Incident Response & Ransomware Simulation Console</h1>
+    <div class="sub">Internee.pk Internship Task • Detection, Mitigation & Recovery + MITRE ATT&CK Ransomware Drill + Staff Training • Built by Ali Zain Hamed</div>
+
+    <div class="grid">
+      <div class="card"><h3>IR Lifecycle Stages</h3><div class="val info">6</div></div>
+      <div class="card"><h3>Ransomware Recovery</h3><div class="val ok">100%</div></div>
+      <div class="card"><h3>Staff Playbook</h3><div class="val ok">READY</div></div>
+      <div class="card"><h3>MITRE Mapped</h3><div class="val info">T1059 / T1490 / T1486</div></div>
+    </div>
+
+    <div class="controls">
+      <button onclick="addDrill()">+ Run Staff Escalation Drill</button>
+      <button class="sec" onclick="addRecovery()">+ Verify Vault Recovery Check</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Phase & MITRE</th>
+          <th>Action</th>
+          <th>Outcome</th>
+        </tr>
+      </thead>
+      <tbody id="irRows"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const steps = [
+      { st: "COMPLETED", ph: "PREPARATION (T1531)", act: "Clean baseline snapshot in recovery vault", out: "SHA-256 baseline recorded" },
+      { st: "ALERT", ph: "DETECTION (T1059.001 / T1490)", act: "Mass rename & recovery tampering alert", out: "High/Critical detection triggered" },
+      { st: "MITIGATED", ph: "CONTAINMENT (T1486)", act: "Isolate host, revoke sessions & block C2", out: "Simulated ransomware impact contained" },
+      { st: "VERIFIED", ph: "RECOVERY (T1486)", act: "Restore from vault & verify file hashes", out: "All target files restored cleanly" },
+      { st: "TRAINED", ph: "STAFF_TRAINING", act: "Internee.pk staff emergency playbook & drill", out: "4 role-based response steps published" }
+    ];
+
+    function render() {
+      document.getElementById("irRows").innerHTML = steps.map(s => `
+        <tr>
+          <td><span class="badge ${s.st === 'ALERT' ? 'b-ALERT' : ''}">${s.st}</span></td>
+          <td><strong>${s.ph}</strong></td>
+          <td>${s.act}</td>
+          <td>${s.out}</td>
+        </tr>
+      `).join("");
+    }
+
+    function addDrill() {
+      steps.unshift({ st: "TRAINED", ph: "STAFF_TRAINING", act: "Simulated phishing/ransomware escalation drill", out: "Staff reported & isolated within SLA" });
+      render();
+    }
+
+    function addRecovery() {
+      steps.unshift({ st: "VERIFIED", ph: "RECOVERY (T1486)", act: "Secondary checksum audit on restored files", out: "Zero hash mismatches detected" });
+      render();
+    }
+
+    render();
+  </script>
+</body>
+</html>
